@@ -4,44 +4,37 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreCategoryRequest;
+use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
+use App\Http\Resources\CategoryResource;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        return response()->json([
-            'categories' => Category::paginate(10)
-        ]);
+        return CategoryResource::collection(Category::paginate(10));
     }
 
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255'
-        ]);
-
-        $category = Category::create($validated);
+        $category = Category::create($request->validated());
 
         return response()->json([
             'message' => 'Category created successfully',
-            'category' => $category
+            'category' => new CategoryResource($category)
         ], 201);
     }
 
-    public function update(Request $request, string $id)
+    public function update(UpdateCategoryRequest $request, string $id)
     {
-        $validated = $request->validate([
-            'name' => 'required|string|max:255'
-        ]);
-
         $category = Category::findOrFail($id);
-        $category->update($validated);
+        $category->update($request->validated());
 
         return response()->json([
             'message' => 'Category updated successfully',
-            'category' => $category
-        ]);
+            'category' => new CategoryResource($category)
+        ], 200);
     }
 
     public function destroy(string $id)
@@ -51,6 +44,6 @@ class CategoryController extends Controller
 
         return response()->json([
             'message' => 'Category deleted successfully'
-        ], 204);
+        ], 204); 
     }
 }
