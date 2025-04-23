@@ -5,11 +5,32 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\ValidationException;
 use App\Models\User;
+use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
+    /**
+     * @OA\Post(
+     *     path="/api/auth/register",
+     *     tags={"Auth"},
+     *     summary="Register a new user",
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"name","email","password","password_confirmation"},
+     *             @OA\Property(property="name", type="string", example="David Igbo"),
+     *             @OA\Property(property="email", type="string", format="email", example="david@example.com"),
+     *             @OA\Property(property="password", type="string", format="password", example="secret123"),
+     *             @OA\Property(property="password_confirmation", type="string", format="password", example="secret123")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Registration successful"
+     *     )
+     * )
+     */
     public function register(Request $request)
     {
         $validated = $request->validate([
@@ -24,27 +45,40 @@ class AuthController extends Controller
             'password' => bcrypt($validated['password']),
         ]);
 
-        $token = $user->createToken('auth_token')->plainTextToken;
-
-        return response()->json([
-            'message' => 'User registered successfully',
-            'user' => $user,
-            'token' => $token,
-        ], 201);
+        return $this->respondWithToken($user);
     }
 
-   /**
-     * Login the user and issue a token.
+    /**
+     * @OA\Post(
+     *     path="/api/auth/login",
+     *     tags={"Auth"},
+     *     summary="Login a user",
+     *     security={{"bearerAuth": {}}},
+     *     @OA\RequestBody(
+     *         required=true,
+     *         @OA\JsonContent(
+     *             required={"email","password"},
+     *             @OA\Property(property="email", type="string", format="email", example="david@example.com"),
+     *             @OA\Property(property="password", type="string", format="password", example="secret123")
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Login successful"
+     *     ),
+     *     @OA\Response(
+     *         response=401,
+     *         description="Unauthorized"
+     *     )
+     * )
      */
     public function login(Request $request)
     {
-        // Validate the incoming request data
         $request->validate([
             'email' => 'required|email',
             'password' => 'required|string',
         ]);
 
-        // Attempt to find the user and check credentials
         $user = User::where('email', $request->email)->first();
 
         if (!$user || !Hash::check($request->password, $user->password)) {
@@ -53,21 +87,38 @@ class AuthController extends Controller
             ]);
         }
 
-        // Create a token for the user (optional: you can use Laravel Passport or Sanctum for token issuance)
-        $token = $user->createToken('YourAppName')->plainTextToken;
-
-        return response()->json([
-            'message' => 'Logged in successfully!',
-            'token' => $token,
-        ]);
+        return $this->respondWithToken($user);
     }
 
+    /**
+     * @OA\Post(
+     *     path="/api/auth/logout",
+     *     tags={"Auth"},
+     *     summary="Logout the user",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Logout successful"
+     *     )
+     * )
+     */
     public function logout(Request $request)
     {
-        $request->user()->tokens()->delete();
+        // Revoke the user's token
+        $request->user()->currentAccessToken()->delete();
 
         return response()->json([
-            'message' => 'Logged out successfully',
-        ]);
+            'message' => 'Logout successful',
+        ], 200);
+    }
+
+    protected function respondWithToken($user)
+    {
+        $token = $user->createToken('auth_token')->plainTextToken;
+
+        return response()->json([
+            'message' => 'Authentication successful',
+            'user' => $user,
+            'token' => $token,
+        ], 200);
     }
 }

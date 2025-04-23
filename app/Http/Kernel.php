@@ -52,6 +52,7 @@ class Kernel extends HttpKernel
             // Removed Sanctum's EnsureFrontendRequestsAreStateful for token-based auth
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            \Illuminate\Http\Middleware\HandleCors::class,
         ],
     ];
 

@@ -7,14 +7,14 @@ use App\Http\Controllers\Api\PodcastController;
 use App\Http\Controllers\Api\EpisodeController;
 use App\Http\Controllers\Api\AuthController;
 
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/auth/register', [AuthController::class, 'register']);
+Route::post('/auth/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->post('/logout', [AuthController::class, 'logout']);
 
 Route::prefix('v1')->group(function () {
-    // Ensure these are all protected by the 'auth:sanctum' middleware
     Route::middleware('auth:sanctum')->apiResource('categories', CategoryController::class);
     Route::middleware('auth:sanctum')->apiResource('podcasts', PodcastController::class);
     Route::middleware('auth:sanctum')->apiResource('episodes', EpisodeController::class);
 });
+
 
