@@ -87,7 +87,7 @@ Swagger documentation is available at:
 - **Method**: `POST`
 - **URL**: `http://127.0.0.1:8001/api/auth/register` 
   
-- **Body** (choose `x-www-form-urlencoded` in Postman):
+- **Body** (choose `x-www-form-urlencoded` on Postman):
 ```json
 {
   "name": "John Peter",
@@ -114,7 +114,7 @@ Swagger documentation is available at:
 - **Method**: `POST`
 - **URL**: `http://127.0.0.1:8001/api/auth/login` 
   
-- **Body** (choose `x-www-form-urlencoded` in Postman):
+- **Body** (choose `x-www-form-urlencoded` on Postman):
 ```json
 {
   "email": "user@example.com",
@@ -141,7 +141,7 @@ Swagger documentation is available at:
 - **Method**: `POST`
 - **URL**: `http://127.0.0.1:8001/api/auth/logout` 
   
-- **Body** (choose `x-www-form-urlencoded` in Postman):
+- **Body** (choose `x-www-form-urlencoded` on Postman):
   - "email": "user@example.com",
   - "password": "12345678"
 
@@ -156,7 +156,7 @@ Swagger documentation is available at:
 - **Method**: `POST`
 - **URL**: `http://127.0.0.1:8001/api/v1/categories` 
   
-- **Body** (choose `x-www-form-urlencoded` in Postman):
+- **Body** (choose `x-www-form-urlencoded` on Postman):
 ```json
 {
     "name": "Book",
@@ -182,7 +182,7 @@ Swagger documentation is available at:
  **Method**: `GET`
 - **URL**: `http://127.0.0.1:8001/api/v1/categories` 
   
-- **Body** (choose `x-www-form-urlencoded` in Postman):
+- **Body** (choose `x-www-form-urlencoded` on Postman):
 ```json
 ```
 
@@ -242,7 +242,7 @@ Swagger documentation is available at:
 **Method**: `GET`
 - **URL**: `http://127.0.0.1:8001/api/v1/categories/2` 
   
-- **Body** (choose `x-www-form-urlencoded` in Postman):
+- **Body** (choose `x-www-form-urlencoded` on Postman):
 ```json
 {
     "name": "Tech",
@@ -265,7 +265,7 @@ Swagger documentation is available at:
 **Method**: `PUT`
 - **URL**: `http://127.0.0.1:8001/api/v1/categories/2` 
   
-- **Body** (choose `x-www-form-urlencoded` in Postman):
+- **Body** (choose `x-www-form-urlencoded` on Postman):
 ```json
 {
     "name": "Tech",
@@ -288,7 +288,7 @@ Swagger documentation is available at:
 **Method**: `DELETE`
 - **URL**: `http://127.0.0.1:8001/api/v1/categories/2` 
   
-- **Body** (choose `x-www-form-urlencoded` in Postman):
+- **Body** (choose `x-www-form-urlencoded` on Postman):
 ```json
 {
     "id": 2,
@@ -310,7 +310,7 @@ Swagger documentation is available at:
 - **Method**: `POST`
 - **URL**: `http://127.0.0.1:8001/api/v1/podcasts` 
   > Use form-data on postman
-- **Body** (choose `x-www-form-urlencoded` in Postman):
+- **Body** (choose `x-www-form-urlencoded` on Postman):
 ```json
 {
         "title": "Tech",
@@ -344,7 +344,7 @@ Swagger documentation is available at:
  **Method**: `GET`
 - **URL**: `http://127.0.0.1:8001/api/v1/podcasts` 
   
-- **Body** (choose `x-www-form-urlencoded` in Postman):
+- **Body** (choose `x-www-form-urlencoded` on Postman):
 ```json
 ```
 
@@ -434,7 +434,7 @@ Swagger documentation is available at:
 **Method**: `GET`
 - **URL**: `http://127.0.0.1:8001/api/v1/podcasts/1` 
   
-- **Body** (choose `x-www-form-urlencoded` in Postman):
+- **Body** (choose `x-www-form-urlencoded` on Postman):
 ```json   
 ```
 
@@ -460,7 +460,7 @@ Swagger documentation is available at:
 **Method**: `PUT`
 - **URL**: `http://127.0.0.1:8001/api/v1/podcasts/1` 
   
-- **Body** (choose `x-www-form-urlencoded` in Postman):
+- **Body** (choose `x-www-form-urlencoded` on Postman):
 ```json
 {
         "title": "Medical",
@@ -494,7 +494,7 @@ Swagger documentation is available at:
 **Method**: `DELETE`
 - **URL**: `http://127.0.0.1:8001/api/v1/podcasts/1` 
   
-- **Body** (choose `x-www-form-urlencoded` in Postman):
+- **Body** (choose `x-www-form-urlencoded` on Postman):
 ```json
 {
         "title": "Tech",
@@ -519,7 +519,7 @@ Swagger documentation is available at:
 - **Method**: `POST`
 - **URL**: `http://127.0.0.1:8001/api/v1/episodes` 
   > Use form-data on postman
-- **Body** (choose `x-www-form-urlencoded` in Postman):
+- **Body** (choose `x-www-form-urlencoded` on Postman):
 ```json
 {
         "podcast_id": "4",
@@ -551,7 +551,7 @@ Swagger documentation is available at:
  **Method**: `GET`
 - **URL**: `http://127.0.0.1:8001/api/v1/episodes` 
   
-- **Body** (choose `x-www-form-urlencoded` in Postman):
+- **Body** (choose `x-www-form-urlencoded` on Postman):
 ```json
 ```
 
@@ -617,7 +617,7 @@ Swagger documentation is available at:
 **Method**: `GET`
 - **URL**: `http://127.0.0.1:8001/api/v1/episodes/1` 
   
-- **Body** (choose `x-www-form-urlencoded` in Postman):
+- **Body** (choose `x-www-form-urlencoded` on Postman):
 ```json   
 ```
 
@@ -641,7 +641,7 @@ Swagger documentation is available at:
 **Method**: `PUT`
 - **URL**: `http://127.0.0.1:8001/api/v1/episodes/1` 
   
-- **Body** (choose `x-www-form-urlencoded` in Postman):
+- **Body** (choose `x-www-form-urlencoded` on Postman):
 ```json
 {
                 "podcast_id": 4,
@@ -673,7 +673,7 @@ Swagger documentation is available at:
 **Method**: `DELETE`
 - **URL**: `http://127.0.0.1:8001/api/v1/episodes/1` 
   
-- **Body** (choose `x-www-form-urlencoded` in Postman):
+- **Body** (choose `x-www-form-urlencoded` on Postman):
 ```json
 {
                 "podcast_id": 4,
