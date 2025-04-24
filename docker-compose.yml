@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile  # Ensure your Dockerfile handles PHP and required dependencies
+    image: podcast-app
+    container_name: podcast-app
+    volumes:
+      - .:/var/www  # Make sure your app code is being mounted into the container
+    ports:
+      - "9000:9000"  # Port for app (consider PHP-FPM or other processes)
+    depends_on:
+      - db  # App depends on db
+
+  webserver:
+    image: nginx:alpine  # Using Nginx with the Alpine version (minimal)
+    container_name: podcast-nginx
+    ports:
+      - "8080:80"  # Port for Nginx web server
+    volumes:
+      - .:/var/www  # Mount your code to the webserver
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf  # Nginx config
+    depends_on:
+      - app  # Webserver depends on app being ready
+
+  db:
+    image: mysql:8  # Using MySQL 8
+    container_name: podcast-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: podcast_fresh  # Database name
+      MYSQL_USER: root  # Database user
+      MYSQL_PASSWORD: root  # Database user password
+      MYSQL_ROOT_PASSWORD: root  # Root password for MySQL
+    volumes:
+      - dbdata:/var/lib/mysql  # Persist database data across restarts
+    ports:
+      - "3307:3306"  # Exposing MySQL on a different port (3307 instead of the default 3306)
+
+volumes:
+  dbdata:  # Defining the persistent volume for MySQL

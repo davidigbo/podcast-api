@@ -1,61 +1,694 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# BLOOCODE Backend Technical Assessment
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This repository contains the Backend Developer Technical Assessment, covering:
+1. **RESTful API for Podcast Platform (Sanctum & Swagger)**
+2. **Deliver clean architecture, modular code, and scalable structure**
+3. **Include:**
+- Pagination, sorting, and filtering for list endpoints.
+- Relationships between Podcasts, Episodes, and Categories.
+- API resource responses, form request validations, and proper error handling.
+- Eloquent relationships and model factories.
+4. **Provide complete and interactive API documentation using Swagger or Postman.**
+5. **Dockerized for local setup and deployment simulation.**
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## **🚀 Project Setup & Installation**
+## Clone the Repository
+- git clone git@github.com:davidigbo/podcast-api.git
+- cd podcast-api
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Install Dependencies
+Ensure you have Composer installed, then run:
+- composer install
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Configure the Environment
+- Copy the .env.example file and update your database credentials.
+- cp .env.example .env
 
-## Learning Laravel
+## Generate the application key:
+- php artisan key:generate
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Set Up the Database
+- Run the migrations to create the necessary tables:
+  - php artisan migrate --seed
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Run the Application
+- Start the Laravel development server:
+ - php artisan serve
 
-## Laravel Sponsors
+ ## Now, visit:
+- 📌 http://127.0.0.1:8001 to access the application.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🛠️ Task: Podcast Platform API
 
-### Premium Partners
+- RESTful API for Podcast Platform (Sanctum & Swagger)
+- Deliver clean architecture, modular code, and scalable structure**
+ -- Include:
+   - Pagination, sorting, and filtering for list endpoints.
+   - Relationships between Podcasts, Episodes, and Categories.
+   - API resource responses, form request validations, and proper error handling.
+   - Eloquent relationships and model factories.
+- Provide complete and interactive API documentation using Swagger or Postman.
+- Dockerized for local setup and deployment simulation.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+## 📖 API Documentation (Swagger)
+Swagger documentation is available at:
+- 📌 http://127.0.0.1:8001/api/documentation
 
-## Contributing
+- To regenerate Swagger docs:
+    - php artisan l5-swagger:generate
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## 👥 Authors <a name="authors"></a>
 
-## Code of Conduct
+👤 **David Igbo**
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- GitHub: [@davidigbo](https://github.com/davidigbo)
+- Twitter: [@davidigbo1](https://twitter.com/davidigbo1)
+- LinkedIn: [davidigbo/](https://www.linkedin.com/in/davidigbo/)
 
-## Security Vulnerabilities
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+> I will like to thank BLOOCODE for this opportunity giving to me to work on this project.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Test API endpoint using Postman:
+
+## 1. Testing the **User API Endpoint**
+
+### Step 1: Authenticate the User (Get Token)
+
+- **Method**: `POST`
+- **URL**: `http://127.0.0.1:8001/api/auth/register` 
+  
+- **Body** (choose `x-www-form-urlencoded` in Postman):
+```json
+{
+  "name": "John Peter",
+ "email": "test@laravel.com",
+  "password": "12345678",
+  "password_confirmation": "2345678"
+}
+```
+> On a successful register, the API will return this:
+
+```json
+{
+    "message": "User registered successfully",
+    "user": {
+        "name": "John Peter",
+        "email": "test@laravel.com",
+        "updated_at": "2025-04-24T15:24:25.000000Z",
+        "created_at": "2025-04-24T15:24:25.000000Z",
+        "id": 12
+    }
+}
+```
+
+- **Method**: `POST`
+- **URL**: `http://127.0.0.1:8001/api/auth/login` 
+  
+- **Body** (choose `x-www-form-urlencoded` in Postman):
+```json
+{
+  "email": "user@example.com",
+  "password": "12345678"
+}
+```
+
+```json
+{
+    "message": "Login successful",
+    "access_token": "1|MtbOB*************************************",
+    "token_type": "Bearer",
+    "user": {
+        "id": 12,
+        "name": "John Peter",
+        "email": "test@laravel.com",
+        "email_verified_at": null,
+        "updated_at": "2025-04-24T15:24:25.000000Z",
+        "created_at": "2025-04-24T15:24:25.000000Z",
+    }
+}
+```
+
+- **Method**: `POST`
+- **URL**: `http://127.0.0.1:8001/api/auth/logout` 
+  
+- **Body** (choose `x-www-form-urlencoded` in Postman):
+  - "email": "user@example.com",
+  - "password": "12345678"
+
+```json
+{
+    "message": "Logged out successfully"
+}
+```
+
+### Step 2: The signed user can create a Product 
+
+- **Method**: `POST`
+- **URL**: `http://127.0.0.1:8001/api/v1/categories` 
+  
+- **Body** (choose `x-www-form-urlencoded` in Postman):
+```json
+{
+    "name": "Book",
+    "slug": "Book"
+}
+```
+
+> On a successful create a category, the API will return this:
+
+```json
+ {
+    "message": "Category created successfully",
+    "category": {
+        "name": "Tech",
+        "slug": "tech",
+        "updated_at": "2025-04-24T15:24:25.000000Z",
+        "created_at": "2025-04-24T15:24:25.000000Z",
+        "id": 2
+    }
+}
+```
+
+ **Method**: `GET`
+- **URL**: `http://127.0.0.1:8001/api/v1/categories` 
+  
+- **Body** (choose `x-www-form-urlencoded` in Postman):
+```json
+```
+
+>  This will return list of all API endpoints:
+
+```json
+{
+    "categories": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 1,
+                "name": "Book",
+                "slug": "book",
+                "created_at": "2025-04-22T15:19:44.000000Z",
+                "updated_at": "2025-04-22T15:19:44.000000Z"
+            },
+            {
+                "id": 2,
+                "name": "Tech",
+                "slug": "tech",
+                "created_at": "2025-04-22T15:24:25.000000Z",
+                "updated_at": "2025-04-22T15:24:25.000000Z"
+            }
+        ],
+        "first_page_url": "http://localhost:8001/api/v1/categories?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http://localhost:8001/api/v1/categories?page=1",
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; Previous",
+                "active": false
+            },
+            {
+                "url": "http://localhost:8001/api/v1/categories?page=1",
+                "label": "1",
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "Next &raquo;",
+                "active": false
+            }
+        ],
+        "next_page_url": null,
+        "path": "http://localhost:8001/api/v1/categories",
+        "per_page": 10,
+        "prev_page_url": null,
+        "to": 2,
+        "total": 2
+    }
+}
+```
+
+**Method**: `GET`
+- **URL**: `http://127.0.0.1:8001/api/v1/categories/2` 
+  
+- **Body** (choose `x-www-form-urlencoded` in Postman):
+```json
+{
+    "name": "Tech",
+    "slug": "tech",
+}     
+```
+
+> This will return API endpoints with a particular id:
+
+```json
+{
+    "id": 2,
+     "name": "Tech",
+     "slug": "tech",
+    "created_at": "2025-04-22T15:24:25.000000Z",
+    "updated_at": "2025-04-22T15:24:25.000000Z"
+}
+```
+
+**Method**: `PUT`
+- **URL**: `http://127.0.0.1:8001/api/v1/categories/2` 
+  
+- **Body** (choose `x-www-form-urlencoded` in Postman):
+```json
+{
+    "name": "Tech",
+    "slug": "tech",
+}
+```
+
+> This will return updated API endpoints with a particular id:
+
+```json
+{
+    "id": 2,
+     "name": "MEDICAL",
+     "slug": "medical",
+    "created_at": "2025-04-22T15:24:25.000000Z",
+    "updated_at": "2025-04-22T15:24:25.000000Z"
+}
+```
+
+**Method**: `DELETE`
+- **URL**: `http://127.0.0.1:8001/api/v1/categories/2` 
+  
+- **Body** (choose `x-www-form-urlencoded` in Postman):
+```json
+{
+    "id": 2,
+     "name": "Tech",
+     "slug": "tech",
+    "created_at": "2025-04-22T15:24:25.000000Z",
+    "updated_at": "2025-04-22T15:24:25.000000Z"
+}
+```
+
+> This will delete API endpoints with a particular id and return this:
+
+```json
+{
+    "message": "Category deleted successfully"
+}
+```
+## Podcasts API endpoints
+- **Method**: `POST`
+- **URL**: `http://127.0.0.1:8001/api/v1/podcasts` 
+  > Use form-data on postman
+- **Body** (choose `x-www-form-urlencoded` in Postman):
+```json
+{
+        "title": "Tech",
+        "description": "Tech is a lucrative career path",
+        "category_id": "4",
+        "author": "Helen",
+        "is_featured": true,
+        "image": "lara.png",
+}        
+```
+
+> On a successful create a podcast, the API will return this:
+
+```json
+  {
+    "message": "Podcast created successfully",
+    "podcast": {
+        "title": "Tech",
+        "description": "Tech is a lucrative career path",
+        "category_id": 4,
+        "author": "Helen",
+        "is_featured": 1,
+        "image": "images/9bFThVo8kkdh3cLXUayR6CJnVLOjDFY7pzsZKAF0.jpg",
+        "updated_at": "2025-04-24T08:53:45.000000Z",
+        "created_at": "2025-04-24T08:53:45.000000Z",
+        "id": 1
+    }
+}
+```
+
+ **Method**: `GET`
+- **URL**: `http://127.0.0.1:8001/api/v1/podcasts` 
+  
+- **Body** (choose `x-www-form-urlencoded` in Postman):
+```json
+```
+
+>  This will return list of all API endpoints:
+
+```json
+{
+    "podcasts": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 1,
+                "category_id": 4,
+                "title": "Tech",
+                "description": "Tech is a lucrative career path",
+                "image": "images/9bFThVo8kkdh3cLXUayR6CJnVLOjDFY7pzsZKAF0.jpg",
+                "is_featured": false,
+                "author": "Helen",
+                "created_at": "2025-04-23T08:50:56.000000Z",
+                "updated_at": "2025-04-23T08:50:56.000000Z"
+            },
+            {
+                "id": 2,
+                "category_id": 4,
+                "title": "Tech",
+                "description": "Tech is a lucrative career path",
+                "image": "images/ApBfiYO0Dgm2l9csIjku8ESwKv3hO2yIr5AwGgbN.jpg",
+                "is_featured": true,
+                "author": "Helen",
+                "created_at": "2025-04-23T08:53:20.000000Z",
+                "updated_at": "2025-04-23T08:53:20.000000Z"
+            },
+            {
+                "id": 3,
+                "category_id": 4,
+                "title": "Tech",
+                "description": "Tech is a lucrative career path",
+                "image": "images/2SvfrEVgzU3Zj1d36hqCJ4BgL6RoU4mNh7LyWcF6.jpg",
+                "is_featured": false,
+                "author": "Helen",
+                "created_at": "2025-04-23T08:53:29.000000Z",
+                "updated_at": "2025-04-23T08:53:29.000000Z"
+            },
+            {
+                "id": 4,
+                "category_id": 4,
+                "title": "Tech",
+                "description": "Tech is a lucrative career path",
+                "image": "images/FNzuFcqhqo5EMOlCQj7QHWIoP3cF3vQP9yAk17rR.jpg",
+                "is_featured": true,
+                "author": "Helen",
+                "created_at": "2025-04-23T08:53:45.000000Z",
+                "updated_at": "2025-04-23T08:53:45.000000Z"
+            }
+        ],
+        "first_page_url": "http://localhost:8001/api/v1/podcasts?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http://localhost:8001/api/v1/podcasts?page=1",
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; Previous",
+                "active": false
+            },
+            {
+                "url": "http://localhost:8001/api/v1/podcasts?page=1",
+                "label": "1",
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "Next &raquo;",
+                "active": false
+            }
+        ],
+        "next_page_url": null,
+        "path": "http://localhost:8001/api/v1/podcasts",
+        "per_page": 10,
+        "prev_page_url": null,
+        "to": 4,
+        "total": 4
+    }
+}
+```
+
+**Method**: `GET`
+- **URL**: `http://127.0.0.1:8001/api/v1/podcasts/1` 
+  
+- **Body** (choose `x-www-form-urlencoded` in Postman):
+```json   
+```
+
+> This will return API endpoints with a particular id:
+
+```json
+  {
+    "message": "Podcast created successfully",
+    "podcast": {
+        "title": "Tech",
+        "description": "Tech is a lucrative career path",
+        "category_id": 4,
+        "author": "Helen",
+        "is_featured": true,
+        "image": "images/9bFThVo8kkdh3cLXUayR6CJnVLOjDFY7pzsZKAF0.jpg",
+        "updated_at": "2025-04-24T08:53:45.000000Z",
+        "created_at": "2025-04-24T08:53:45.000000Z",
+        "id": 1
+    }
+}
+```
+
+**Method**: `PUT`
+- **URL**: `http://127.0.0.1:8001/api/v1/podcasts/1` 
+  
+- **Body** (choose `x-www-form-urlencoded` in Postman):
+```json
+{
+        "title": "Medical",
+        "description": "Medical is good",
+        "category_id": "4",
+        "author": "Helen",
+        "is_featured": 0,
+        "image": "lara.png",
+}  
+```
+
+> This will return updated API endpoints with a particular id:
+
+```json
+  {
+    "message": "Podcast updated successfully",
+    "podcast": {
+        "title": "Medical",
+        "description": "Medical is good",
+        "category_id": 4,
+        "author": "Helen",
+        "is_featured": false,
+        "image": "images/9bFThVo8kkdh3cLXUayR6CJnVLOjDFY7pzsZKAF0.jpg",
+        "updated_at": "2025-04-24T08:53:45.000000Z",
+        "created_at": "2025-04-24T08:53:45.000000Z",
+        "id": 1
+    }
+}
+```
+
+**Method**: `DELETE`
+- **URL**: `http://127.0.0.1:8001/api/v1/podcasts/1` 
+  
+- **Body** (choose `x-www-form-urlencoded` in Postman):
+```json
+{
+        "title": "Tech",
+        "description": "Tech is a lucrative career path",
+        "category_id": "4",
+        "author": "Helen",
+        "is_featured": 0,
+        "image": "lara.png",
+}  
+```
+
+> This will delete API endpoints with a particular id and return this:
+
+```json
+{
+    "message": "Podcast deleted successfully"
+}
+```
+
+## Episodes API endpoints
+
+- **Method**: `POST`
+- **URL**: `http://127.0.0.1:8001/api/v1/episodes` 
+  > Use form-data on postman
+- **Body** (choose `x-www-form-urlencoded` in Postman):
+```json
+{
+        "podcast_id": "4",
+        "title": "Tech",
+        "audio_url": "file_example_MP3_700KB.mp3",
+        "duration": "30",
+        "release_date": "2024-10-20"
+}        
+```
+
+> On a successful create a episode, the API will return this:
+
+```json
+  {
+    "message": "Episode created successfully",
+    "episode": {
+        "podcast_id": "4",
+        "title": "Tech",
+        "audio_url": "audios/GsgaX5P6OGoCVTtoxqa3n2KF61Jw0HPiTA012PZi.mp3",
+        "duration": "30",
+        "release_date": "2024-10-20T00:00:00.000000Z",
+        "updated_at": "2025-04-23T09:44:31.000000Z",
+        "created_at": "2025-04-23T09:44:31.000000Z",
+        "id": 2
+    }
+}
+```
+
+ **Method**: `GET`
+- **URL**: `http://127.0.0.1:8001/api/v1/episodes` 
+  
+- **Body** (choose `x-www-form-urlencoded` in Postman):
+```json
+```
+
+>  This will return list of all API endpoints:
+
+```json
+{
+    "episodes": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 1,
+                "podcast_id": 4,
+                "title": "Tech",
+                "audio_url": "audios/5Cy9ld9uuIepml4KY1q094J7amnAL661dkC1rY5X.mp3",
+                "duration": "30",
+                "release_date": "2024-10-20T00:00:00.000000Z",
+                "created_at": "2025-04-23T09:43:06.000000Z",
+                "updated_at": "2025-04-23T09:43:06.000000Z"
+            },
+            {
+                "id": 2,
+                "podcast_id": 4,
+                "title": "Tech",
+                "audio_url": "audios/GsgaX5P6OGoCVTtoxqa3n2KF61Jw0HPiTA012PZi.mp3",
+                "duration": "30",
+                "release_date": "2024-10-20T00:00:00.000000Z",
+                "created_at": "2025-04-23T09:44:31.000000Z",
+                "updated_at": "2025-04-23T09:44:31.000000Z"
+            }
+        ],
+        "first_page_url": "http://localhost:8001/api/v1/episodes?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http://localhost:8001/api/v1/episodes?page=1",
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; Previous",
+                "active": false
+            },
+            {
+                "url": "http://localhost:8001/api/v1/episodes?page=1",
+                "label": "1",
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "Next &raquo;",
+                "active": false
+            }
+        ],
+        "next_page_url": null,
+        "path": "http://localhost:8001/api/v1/episodes",
+        "per_page": 10,
+        "prev_page_url": null,
+        "to": 2,
+        "total": 2
+    }
+}
+```
+
+**Method**: `GET`
+- **URL**: `http://127.0.0.1:8001/api/v1/episodes/1` 
+  
+- **Body** (choose `x-www-form-urlencoded` in Postman):
+```json   
+```
+
+> This will return API endpoints with a particular id:
+
+```json
+  {
+    {
+                "id": 1,
+                "podcast_id": 4,
+                "title": "Tech",
+                "audio_url": "audios/5Cy9ld9uuIepml4KY1q094J7amnAL661dkC1rY5X.mp3",
+                "duration": "30",
+                "release_date": "2024-10-20T00:00:00.000000Z",
+                "created_at": "2025-04-23T09:43:06.000000Z",
+                "updated_at": "2025-04-23T09:43:06.000000Z"
+    }
+}
+```
+
+**Method**: `PUT`
+- **URL**: `http://127.0.0.1:8001/api/v1/episodes/1` 
+  
+- **Body** (choose `x-www-form-urlencoded` in Postman):
+```json
+{
+                "podcast_id": 4,
+                "title": "Medical",
+                "audio_url": "file_example_MP3_700KB.mp3",
+                "duration": "40",
+                "release_date": "2024-10-20T00:00:00.000000Z",
+}, 
+```
+
+> This will return updated API endpoints with a particular id:
+
+```json
+  {
+    "message": "episodes updated successfully",
+    {
+                "id": 1,
+                "podcast_id": 4,
+                "title": "Medical",
+                "audio_url": "audios/5Cy9ld9uuIepml4KY1q094J7amnAL661dkC1rY5X.mp3",
+                "duration": "40",
+                "release_date": "2024-10-20T00:00:00.000000Z",
+                "created_at": "2025-04-23T09:43:06.000000Z",
+                "updated_at": "2025-04-23T09:43:06.000000Z"
+    }
+}
+```
+
+**Method**: `DELETE`
+- **URL**: `http://127.0.0.1:8001/api/v1/episodes/1` 
+  
+- **Body** (choose `x-www-form-urlencoded` in Postman):
+```json
+{
+                "podcast_id": 4,
+                "title": "Medical",
+                "audio_url": "file_example_MP3_700KB.mp3",
+                "duration": "40",
+                "release_date": "2024-10-20T00:00:00.000000Z",
+}
+```
+
+> This will delete API endpoints with a particular id and return this:
+
+```json
+{
+    "message": "Episode deleted successfully"
+}
+```
+
