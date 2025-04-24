@@ -35,4 +35,14 @@ class Podcast extends Model
     {
         return $this->hasMany(Episode::class);
     }
+
+    /**
+     * Scope a query to only include podcasts from a given category slug.
+     */
+    public function scopeFromCategorySlug($query, $slug)
+    {
+        return $query->whereHas('category', function ($q) use ($slug) {
+            $q->where('slug', $slug);
+        });
+    }
 }

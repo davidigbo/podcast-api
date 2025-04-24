@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('episodes', function (Blueprint $table) {
             $table->id();
             $table->foreignId('podcast_id')->constrained()->onDelete('cascade');
-            $table->string('title');
-            $table->string('audio_url');  
-            $table->string('duration');
-            $table->date('release_date');
+            $table->string('title')->index(); 
+            $table->string('audio_url');
+            $table->unsignedInteger('duration'); 
+            $table->date('release_date')->index(); 
             $table->timestamps();
         });
     }
